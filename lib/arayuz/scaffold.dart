@@ -11,7 +11,7 @@ class ScaffoldOgesi extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.playlist_play),
               tooltip: 'Air it',
-              onPressed: () => print("Üst menü: playlist-play"),
+              onPressed: () => Navigator.pushNamed(context, "/flutter_demo"),
             ),
             IconButton(
               icon: Icon(Icons.playlist_add),
@@ -36,23 +36,35 @@ class ScaffoldOgesi extends StatelessWidget {
           crossAxisSpacing: 10.0,
           crossAxisCount: 3,
           children: <Widget>[
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
+            new GestureDetector(
+              onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
+              child: Container(
+                color: Colors.blue.shade100,
+                margin: EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                child: new Text("""Tek Tıklama
+              Fluter Demo Sayfasına Git""", textAlign: TextAlign.center),
+              ),
             ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
+            new GestureDetector(
+              onDoubleTap: () => Navigator.pushNamed(context, "/hello"),
+              child: Container(
+                color: Colors.blue.shade100,
+                margin: EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                child: new Text("""Çift Tıklama
+              Hello Sayfasına Git""", textAlign: TextAlign.center),
+              ),
             ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
+            new GestureDetector(
+              onLongPress: () => Navigator.pushNamed(context, "/degisenwidget"),
+              child: Container(
+                color: Colors.blue.shade100,
+                margin: EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                child: new Text("""Uzun Tıklama
+              Degisen Widget Sayfasına Git""", textAlign: TextAlign.center),
+              ),
             ),
             new Container(
               color: Colors.blue.shade100,

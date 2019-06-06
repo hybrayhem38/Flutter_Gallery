@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+/*
+void main() => runApp(FlutterDemo());
 
-void main() => runApp(Homepage());
-
-class Homepage extends StatelessWidget {
+class FlutterDemo extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
+*/
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
