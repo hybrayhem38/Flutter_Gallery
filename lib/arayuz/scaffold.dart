@@ -25,7 +25,7 @@ class ScaffoldOgesi extends StatelessWidget {
             ),
           ],
         ),
-        body: new Center(
+        body: Center(
 //          child: new Text(
 //            "Merhaba Scaffold",
 //            textDirection: TextDirection.ltr,
@@ -44,7 +44,8 @@ class ScaffoldOgesi extends StatelessWidget {
                         image: NetworkImage(
                             "https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"),
                         fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,borderRadius: BorderRadius.circular(25.0)),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(25.0)),
 //                color: Colors.blue.shade100,
                 margin: EdgeInsets.all(5.0),
                 alignment: Alignment.center,
@@ -52,6 +53,35 @@ class ScaffoldOgesi extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   transform: Matrix4.skewY(0.0)..rotateZ(0),
                   child: Container(
+                    padding: EdgeInsets.all(8.0),
+                    color: Color(0xCDFFFFFF),
+                    child: Text(
+                      "Tek Tıklama \nFluter Demo \nSayfasına Git",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            new GestureDetector(
+              onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
+              child: Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage("assets/images/lake.jpg"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(25.0)),
+//                color: Colors.blue.shade100,
+                margin: EdgeInsets.all(5.0),
+                alignment: Alignment.center,
+                child: Transform(
+                  alignment: Alignment.bottomCenter,
+                  transform: Matrix4.skewY(0.0)..rotateZ(0),
+                  child: Container(
+//                    width: double.infinity,
                     padding: EdgeInsets.all(8.0),
                     color: Color(0xCDFFFFFF),
                     child: Text(
