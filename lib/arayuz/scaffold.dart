@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ScaffoldOgesi extends StatelessWidget {
   @override
@@ -33,165 +34,236 @@ class ScaffoldOgesi extends StatelessWidget {
             child: GridView.count(
           primary: false,
 //          padding: const EdgeInsets.all(20.0),
-          crossAxisSpacing: 10.0,
+          crossAxisSpacing: 5.0,
           crossAxisCount: 3,
           children: <Widget>[
-            new GestureDetector(
-              onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
-              child: Container(
-                decoration: BoxDecoration(
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
+                child: Container(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
                             "https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"),
                         fit: BoxFit.cover),
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(25.0)),
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
 //                color: Colors.blue.shade100,
-                margin: EdgeInsets.all(5.0),
-                alignment: Alignment.center,
-                child: Transform(
-                  alignment: Alignment.bottomCenter,
-                  transform: Matrix4.skewY(0.0)..rotateZ(0),
-                  child: Container(
-                    padding: EdgeInsets.all(8.0),
-                    color: Color(0xCDFFFFFF),
-                    child: Text(
-                      "Tek Tıklama \nFluter Demo \nSayfasına Git",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w600),
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+                      padding: EdgeInsets.all(8.0),
+                      color: Color(0xCDFFFFFF),
+                      child: Text(
+                        "Tek Tıklama \nFluter Demo \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            new GestureDetector(
-              onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
-              child: Container(
-                decoration: BoxDecoration(
+            Card(
+              child: GestureDetector(
+                onTap: () {
+                  Fluttertoast.showToast(
+                    msg: "Bu ögeye bir kez tıkladınız.",
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM,
+                    backgroundColor: Colors.black87,
+                    textColor: Colors.white,
+                  );
+                },
+                onDoubleTap: () {
+                  Fluttertoast.showToast(
+                    msg: "Bu ögeye iki kez tıkladınız.",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.white70,
+                    textColor: Colors.black,
+                  );
+                },
+                onLongPress: () {
+                  Fluttertoast.showToast(
+                    msg: "Bu ögeye uzun tıkladınız.",
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.TOP,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Toast.jpg"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.bottomCenter,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+                      padding: EdgeInsets.all(8.0),
+                      color: Color(0xCDFFFFFF),
+                      child: Text(
+                        "Toast Mesajı \nGöster",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/imageviews"),
+                child: Container(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("assets/images/lake.jpg"),
                         fit: BoxFit.cover),
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(25.0)),
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
 //                color: Colors.blue.shade100,
-                margin: EdgeInsets.all(5.0),
-                alignment: Alignment.center,
-                child: Transform(
-                  alignment: Alignment.bottomCenter,
-                  transform: Matrix4.skewY(0.0)..rotateZ(0),
-                  child: Container(
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
 //                    width: double.infinity,
-                    padding: EdgeInsets.all(8.0),
-                    color: Color(0xCDFFFFFF),
-                    child: Text(
-                      "Tek Tıklama \nFluter Demo \nSayfasına Git",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w600),
+                      padding: EdgeInsets.all(8.0),
+                      color: Color(0xCDFFFFFF),
+                      child: Text(
+                        "Tek Tıklama \nİmage View \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            new GestureDetector(
-              onDoubleTap: () => Navigator.pushNamed(context, "/hello"),
-              child: Container(
-                color: Colors.blue.shade100,
-                margin: EdgeInsets.all(5.0),
-                alignment: Alignment.center,
-                child: new Text("""Çift Tıklama
-              Hello Sayfasına Git""", textAlign: TextAlign.center),
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/alertview"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://material-design.storage.googleapis.com/publish/material_v_9/0Bzhp5Z4wHba3TzFHYVlrbWF2bnM/components_alerts_1.png"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(8.0),
+                      color: Colors.black54,
+                      child: Text(
+                        "Tek Tıklama \nAlert View \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
-            new GestureDetector(
-              onLongPress: () => Navigator.pushNamed(context, "/degisenwidget"),
-              child: Container(
-                color: Colors.blue.shade100,
-                margin: EdgeInsets.all(5.0),
-                alignment: Alignment.center,
-                child: new Text("""Uzun Tıklama
-              Degisen Widget Sayfasına Git""", textAlign: TextAlign.center),
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/shared_preferences"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjIxxkDI4rx4TGurHV1lPwDBXfO6GSuFvLfWjCJTsOM5VgknkOQg"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(8.0),
+                      color: Colors.black54,
+                      child: Text(
+                        "Tek Tıklama \nShared Preferences \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
+            Card(
+              child: GestureDetector(
+                onDoubleTap: () => Navigator.pushNamed(context, "/hello"),
+                child: Container(
+                  color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: new Text("Çift Tıklama \nHello \nSayfasına Git",
+                      textAlign: TextAlign.center),
+                ),
+              ),
             ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
+            Card(
+              child: GestureDetector(
+                onLongPress: () =>
+                    Navigator.pushNamed(context, "/degisenwidget"),
+                child: Container(
+                  color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: new Text(
+                      "Uzun Tıklama \nDegisen Widget \nSayfasına Git",
+                      textAlign: TextAlign.center),
+                ),
+              ),
             ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
-            new Container(
-              color: Colors.blue.shade100,
-              margin: EdgeInsets.all(5.0),
-              alignment: Alignment.center,
-              child: new Text("Grid elemanı", textAlign: TextAlign.center),
-            ),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
+            GridElemani(),
           ],
         )),
         bottomNavigationBar: new BottomNavigationBar(
@@ -219,7 +291,9 @@ class ScaffoldOgesi extends StatelessWidget {
               }
             }),
         drawer: new Drawer(
-          child: new ListTile(
+            child: Padding(
+          padding: EdgeInsets.only(top: 15.0),
+          child: ListTile(
             leading: Icon(Icons.account_circle),
             title: Text("Account"),
             onTap: () {
@@ -227,6 +301,20 @@ class ScaffoldOgesi extends StatelessWidget {
               debugPrint("Yan menü: Account");
             },
           ),
-        ));
+        )));
+  }
+}
+
+class GridElemani extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        color: Colors.blue.shade100,
+        margin: EdgeInsets.all(5.0),
+        alignment: Alignment.center,
+        child: new Text("Grid elemanı", textAlign: TextAlign.center),
+      ),
+    );
   }
 }
