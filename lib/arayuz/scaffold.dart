@@ -194,39 +194,7 @@ class ScaffoldOgesi extends StatelessWidget {
                 ),
               ),
             ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/pull2refresh"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://www.androidhive.info/wp-content/uploads/2015/05/android-swipe-down-to-refresh-list-view-tutorial.jpg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Color(0xCDFFFFFF),
-                      child: Text(
-                        "Tek Tıklama \nPull To Refresh \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+
             Card(
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(context, "/alertview"),
@@ -318,6 +286,72 @@ class ScaffoldOgesi extends StatelessWidget {
                       color: Colors.black54,
                       child: Text(
                         "Tek Tıklama \nDosya İşlemleri\nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/pull2refresh"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://www.androidhive.info/wp-content/uploads/2015/05/android-swipe-down-to-refresh-list-view-tutorial.jpg"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(8.0),
+                      color: Color(0xCDFFFFFF),
+                      child: Text(
+                        "Tek Tıklama \nPull To Refresh \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () => Navigator.pushNamed(context, "/json_islemleri"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://www.openautomationsoftware.com/wp-content/uploads/2016/07/JSON-icon-2.jpg"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(8.0),
+                      color: Colors.black54,
+                      child: Text(
+                        "Tek Tıklama \nJson İşlemleri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
