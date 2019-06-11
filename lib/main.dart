@@ -7,9 +7,11 @@ import './arayuz/imageviews.dart';
 import './arayuz/alertview.dart';
 import 'arayuz/dosya_islemleri.dart';
 import 'arayuz/shared_preferences.dart';
+import 'arayuz/pull2refresh.dart';
 
 void main() {
   runApp(new MaterialApp(
+    debugShowCheckedModeBanner: false,
     initialRoute: "/",
     routes: {
       "/": (context) => ScaffoldOgesi(),
@@ -20,6 +22,7 @@ void main() {
       "/alertview": (context) => AlertViewOgesi(),
       "/shared_preferences": (context) => Shared_Preferences(),
       "/dosya_islemleri": (context) => DosyaIslemleri(kayit_islemi: KayitIslemleri(),),
+      "/pull2refresh": (context) => Pull2Refresh(),
     }
 //    title: "Scaffold",
 //    debugShowCheckedModeBanner: false,
