@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:io';
 
 class ScaffoldOgesi extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey =
+      GlobalKey<ScaffoldState>(); // snackbar ile eklendi
+  _showSnackBar(String content) {
+    debugPrint("Showing snackbar...");
+    final snackBar = SnackBar(
+      content: new Text(content),
+//    duration: Duration(seconds: 3),
+//      backgroundColor: Colors.green,
+      action: SnackBarAction(
+          label: "Tamam",
+          onPressed: () {
+            debugPrint("Snackbar Tamam butonu");
+          }),
+    );
+    _scaffoldKey.currentState.showSnackBar(snackBar);
+  }
+
+  checkInternetConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        _showSnackBar("İnternet bağlantısı var.");
+      }
+    } on SocketException catch (_) {
+      _showSnackBar("İnternet bağlantısı yok.");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.greenAccent.shade100,
         appBar: new AppBar(
           title: Text('Merhaba appbar'),
@@ -23,6 +53,11 @@ class ScaffoldOgesi extends StatelessWidget {
               icon: Icon(Icons.playlist_add_check),
               tooltip: 'Repair it',
               onPressed: () => print("Üst menü: playlist-add-check"),
+            ),
+            IconButton(
+              icon: Icon(Icons.network_check),
+              tooltip: 'Network Check',
+              onPressed: () => checkInternetConnection(),
             ),
           ],
         ),
@@ -228,8 +263,7 @@ class ScaffoldOgesi extends StatelessWidget {
             ),
             Card(
               child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, "/dosya_islemleri"),
+                onTap: () => Navigator.pushNamed(context, "/dosya_islemleri"),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
