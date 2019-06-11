@@ -35,7 +35,7 @@ class ScaffoldOgesi extends StatelessWidget {
           primary: false,
 //          padding: const EdgeInsets.all(20.0),
           crossAxisSpacing: 5.0,
-          crossAxisCount: 3,
+          crossAxisCount: 2,
           children: <Widget>[
             Card(
               child: GestureDetector(
@@ -194,7 +194,8 @@ class ScaffoldOgesi extends StatelessWidget {
             ),
             Card(
               child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/shared_preferences"),
+                onTap: () =>
+                    Navigator.pushNamed(context, "/shared_preferences"),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -216,6 +217,40 @@ class ScaffoldOgesi extends StatelessWidget {
                       color: Colors.black54,
                       child: Text(
                         "Tek Tıklama \nShared Preferences \nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, "/dosya_islemleri"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPF7x3QiywfswwxSNXeQe4nT3sO48p-JeV39-dtLLXPFuEDA35"),
+                        fit: BoxFit.cover),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(5.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(8.0),
+                      color: Colors.black54,
+                      child: Text(
+                        "Tek Tıklama \nDosya İşlemleri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
