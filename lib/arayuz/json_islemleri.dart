@@ -32,9 +32,9 @@ class Post {
 
 Future<Post> getPost() async {
   final answer = await http.get("https://jsonplaceholder.typicode.com/posts/1");
-
   if (answer.statusCode == 200) {
     return Post.fromJson(json.decode(answer.body));
+
   } else {
     throw Exception(
         "Veriler getirilirken hata oluştu. Hata kodu: ${answer.statusCode}");

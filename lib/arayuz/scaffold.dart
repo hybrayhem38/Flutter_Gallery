@@ -194,7 +194,6 @@ class ScaffoldOgesi extends StatelessWidget {
                 ),
               ),
             ),
-
             Card(
               child: GestureDetector(
                 onTap: () => Navigator.pushNamed(context, "/alertview"),
@@ -355,6 +354,74 @@ class ScaffoldOgesi extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, "/localJson_islemleri"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/json.png"),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(15.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(10.0),
+                      color: Colors.black54,
+                      child: Text(
+                        "Tek Tıklama \nYerel Json İşlemleri\nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white70, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, "/basithttp"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage("https://previews.123rf.com/images/rastudio/rastudio1708/rastudio170808997/84743505-http-vector-line-icon-isolated-on-white-background-http-line-icon-for-infographic-website-or-app-blu.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(15.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      padding: EdgeInsets.all(10.0),
+                      color: Colors.grey.withAlpha(220),
+                      child: Text(
+                        "Tek Tıklama \nHttp İşlemleri\nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.w700),
                       ),
                     ),
                   ),

@@ -41,6 +41,10 @@ flutter:
   assets:
     - assets/images/lake.jpg
     - assets/images/loading.gif
+    - assets/images/json.png
+    - assets/images/boy.png
+    - assets/images/girl.png
+    - assets/data/sinif.json
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
