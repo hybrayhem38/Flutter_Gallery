@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lamp/lamp.dart';
 import 'dart:async';
+import 'package:permission_handler/permission_handler.dart';
 
 class FlashLight extends StatefulWidget {
   @override
@@ -20,7 +21,21 @@ class FlashLightState extends State<StatefulWidget> {
     setupLight();
   }
 
+  requestPermission() async {
+    debugPrint("Kamera izni isteniyor...");
+    Map<PermissionGroup, PermissionStatus> permissions =
+        await PermissionHandler().requestPermissions([PermissionGroup.camera]);
+  }
+
+
   setupLight() async {
+    PermissionStatus permission = await PermissionHandler()
+        .checkPermissionStatus(
+            PermissionGroup.camera); // camera permission checking
+    permission == PermissionStatus.granted
+        ? debugPrint("Kamera izni verilmiş.")
+        : requestPermission();
+
     bool _deviceHasLight = await Lamp.hasLamp;
     setState(() {
       _deviceHasLight = deviceHasLight;
@@ -35,7 +50,7 @@ class FlashLightState extends State<StatefulWidget> {
       deviceHasLight = v;
       lightOn = !lightOn;
     });
-    debugPrint(lightOn?"Işık açıldı":"Işık kapandı.");
+    debugPrint(lightOn ? "Işık açıldı" : "Işık kapandı.");
   }
 
   switchSlider() {
@@ -111,11 +126,17 @@ class FlashLightState extends State<StatefulWidget> {
         ));
   }
 
-  _changeIntensity(double intensity,) {
-    Lamp.turnOn(intensity: intensity);
-    debugPrint("Işık parlaklığı değiştirildi: $intensity.");
-    setState(() {
-      lightIntensity = intensity;
-    });
+  _changeIntensity(
+    double intensity,
+  ) {
+    try {
+      Lamp.turnOn(intensity: intensity);
+      debugPrint("Işık parlaklığı değiştirildi: $intensity.");
+      setState(() {
+        lightIntensity = intensity;
+      });
+    } catch (e) {
+      debugPrint("Flaş parlaklığı ayarlanırken sorun oluştu:  $e");
+    }
   }
 }

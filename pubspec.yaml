@@ -28,6 +28,7 @@ dependencies:
   path_provider: ^1.1.0
   http: ^0.12.0+2
   lamp: ^0.0.6
+  permission_handler: '^3.1.0'
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +50,7 @@ flutter:
     - assets/images/boy.png
     - assets/images/girl.png
     - assets/data/sinif.json
-    - assets/audios/
+    - assets/audio/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
