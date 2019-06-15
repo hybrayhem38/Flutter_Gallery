@@ -7,6 +7,7 @@ import './arayuz/imageviews.dart';
 import './arayuz/alertview.dart';
 import 'arayuz/basithttp.dart';
 import 'arayuz/dosya_islemleri.dart';
+import 'arayuz/flashlight.dart';
 import 'arayuz/json_islemleri.dart';
 import 'arayuz/localJson_islemleri.dart';
 import 'arayuz/shared_preferences.dart';
@@ -29,6 +30,7 @@ void main() {
       "/localJson_islemleri": (context) => localJsonIslemleri(),
       "/basithttp": (context) => basitHttp(),
       "/pull2refresh": (context) => Pull2Refresh(),
+      "/flashlight": (context) => FlashLight(),
     }
 //    title: "Scaffold",
 //    debugShowCheckedModeBanner: false,

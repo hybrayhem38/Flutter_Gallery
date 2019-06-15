@@ -94,7 +94,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Color(0xCDFFFFFF),
                       child: Text(
-                        "Tek Tıklama \nFluter Demo \nSayfasına Git",
+                        "Fluter Demo \nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w600),
@@ -184,7 +184,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Color(0xCDFFFFFF),
                       child: Text(
-                        "Tek Tıklama \nİmage View \nSayfasına Git",
+                        "İmage View \nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w600),
@@ -217,7 +217,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Colors.black54,
                       child: Text(
-                        "Tek Tıklama \nAlert View \nSayfasına Git",
+                        "Alert View \nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
@@ -251,7 +251,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Colors.black54,
                       child: Text(
-                        "Tek Tıklama \nShared Preferences \nSayfasına Git",
+                        "Shared Preferences \nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
@@ -284,7 +284,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Colors.black54,
                       child: Text(
-                        "Tek Tıklama \nDosya İşlemleri\nSayfasına Git",
+                        "Dosya İşlemleri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
@@ -317,7 +317,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Color(0xCDFFFFFF),
                       child: Text(
-                        "Tek Tıklama \nPull To Refresh \nSayfasına Git",
+                        "Pull To Refresh \nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w600),
@@ -350,7 +350,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(8.0),
                       color: Colors.black54,
                       child: Text(
-                        "Tek Tıklama \nJson İşlemleri\nSayfasına Git",
+                        "Json İşlemleri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w600),
@@ -384,7 +384,7 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(10.0),
                       color: Colors.black54,
                       child: Text(
-                        "Tek Tıklama \nYerel Json İşlemleri\nSayfasına Git",
+                        "Yerel Json İşlemleri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white70, fontWeight: FontWeight.w700),
@@ -418,7 +418,42 @@ class ScaffoldOgesi extends StatelessWidget {
                       padding: EdgeInsets.all(10.0),
                       color: Colors.grey.withAlpha(220),
                       child: Text(
-                        "Tek Tıklama \nHttp İşlemleri\nSayfasına Git",
+                        "Http İşlemleri\nSayfasına Git",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Card(
+              child: GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, "/flashlight"),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage("https://img.icons8.com/cotton/2x/flash-light.png"),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: BoxShape.rectangle,
+//                      borderRadius: BorderRadius.circular(25.0)
+                  ),
+//                color: Colors.blue.shade100,
+                  margin: EdgeInsets.all(15.0),
+                  alignment: Alignment.center,
+                  child: Transform(
+                    alignment: Alignment.bottomCenter,
+                    transform: Matrix4.skewY(0.0)..rotateZ(0),
+                    child: Container(
+//                    width: double.infinity,
+                      margin: EdgeInsets.only(top: 80),
+                      padding: EdgeInsets.all(10.0),
+                      color: Colors.grey.withAlpha(220),
+                      child: Text(
+                        "El Feneri\nSayfasına Git",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.black87, fontWeight: FontWeight.w700),
@@ -435,7 +470,7 @@ class ScaffoldOgesi extends StatelessWidget {
                   color: Colors.blue.shade100,
                   margin: EdgeInsets.all(5.0),
                   alignment: Alignment.center,
-                  child: new Text("Çift Tıklama \nHello \nSayfasına Git",
+                  child: new Text("Hello \nSayfasına Git\n(Çift Tıklama)",
                       textAlign: TextAlign.center),
                 ),
               ),
@@ -449,7 +484,7 @@ class ScaffoldOgesi extends StatelessWidget {
                   margin: EdgeInsets.all(5.0),
                   alignment: Alignment.center,
                   child: new Text(
-                      "Uzun Tıklama \nDegisen Widget \nSayfasına Git",
+                      "Degisen Widget \nSayfasına Git\n(Uzun Tıklama)",
                       textAlign: TextAlign.center),
                 ),
               ),
