@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/arayuz/form_dialog.dart';
 import './arayuz/flutter_demo.dart';
 import './arayuz/hello.dart';
 import './arayuz/scaffold.dart';
@@ -25,15 +26,17 @@ void main() {
       "/imageviews": (context) => ImageViews(),
       "/alertview": (context) => AlertViewOgesi(),
       "/shared_preferences": (context) => Shared_Preferences(),
-      "/dosya_islemleri": (context) => DosyaIslemleri(kayit_islemi: KayitIslemleri(),),
+      "/dosya_islemleri": (context) => DosyaIslemleri(
+            kayit_islemi: KayitIslemleri(),
+          ),
       "/json_islemleri": (context) => JsonIslemleri(),
       "/localJson_islemleri": (context) => localJsonIslemleri(),
       "/basithttp": (context) => basitHttp(),
       "/pull2refresh": (context) => Pull2Refresh(),
       "/flashlight": (context) => FlashLight(),
-    }
-//    title: "Scaffold",
-//    debugShowCheckedModeBanner: false,
-//    theme: new ThemeData(primarySwatch: Colors.blue),
+      "/form_dialog": (context) => DialogExample(),
+    },
+    theme: new ThemeData(
+        fontFamily: "Merriweather", primaryColor: Colors.blue.shade700),
   ));
 }

@@ -27,7 +27,6 @@ class FlashLightState extends State<StatefulWidget> {
         await PermissionHandler().requestPermissions([PermissionGroup.camera]);
   }
 
-
   setupLight() async {
     PermissionStatus permission = await PermissionHandler()
         .checkPermissionStatus(
@@ -78,10 +77,13 @@ class FlashLightState extends State<StatefulWidget> {
                 ),
                 Opacity(
                   opacity: lightIntensity,
-                  child: Container(
-                      child: Image.asset(
-                    "${lightOn ? "assets/images/fire.gif" : "assets/images/transparent.gif"}",
-                  )),
+                  child: AnimatedCrossFade(
+                      firstChild: Image.asset("assets/images/fire.gif"),
+                      secondChild: Image.asset("assets/images/transparent.gif"),
+                      crossFadeState: lightOn
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      duration: Duration(milliseconds: 800)),
                 ),
                 GestureDetector(
                   onTap: switchLight,
@@ -96,7 +98,8 @@ class FlashLightState extends State<StatefulWidget> {
                 ),
                 Slider(
                   value: lightIntensity,
-                  onChanged: lightOn ? _changeIntensity(lightIntensity) : null,
+                  onChanged: lightOn ? _changeIntensity : null,
+                  //TODO: when function is _changeIntensity(lightIntensity), slider goes inactive
                   inactiveColor: Colors.red.withOpacity(0.5),
                   activeColor: Colors.amber,
                   min: 0,
@@ -129,14 +132,10 @@ class FlashLightState extends State<StatefulWidget> {
   _changeIntensity(
     double intensity,
   ) {
-    try {
-      Lamp.turnOn(intensity: intensity);
-      debugPrint("Işık parlaklığı değiştirildi: $intensity.");
-      setState(() {
-        lightIntensity = intensity;
-      });
-    } catch (e) {
-      debugPrint("Flaş parlaklığı ayarlanırken sorun oluştu:  $e");
-    }
+//    Lamp.turnOn(intensity: intensity);    // Hata: flutter W/CameraInjector( 8171): setParametersEx: Lost camera info android.hardware.Camera@354990b
+    debugPrint("Işık parlaklığı değiştirildi: $intensity.");
+    setState(() {
+      lightIntensity = intensity;
+    });
   }
 }

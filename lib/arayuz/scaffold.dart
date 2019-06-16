@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/anasayfa_card.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:io';
 
 class ScaffoldOgesi extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey =
-      GlobalKey<ScaffoldState>(); // snackbar ile eklendi
+      GlobalKey<ScaffoldState>(); // snackbar için eklendi
+
   _showSnackBar(String content) {
     debugPrint("Showing snackbar...");
     final snackBar = SnackBar(
@@ -35,9 +37,14 @@ class ScaffoldOgesi extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.greenAccent.shade100,
+        backgroundColor: Colors.blueGrey,
         appBar: new AppBar(
-          title: Text('Merhaba appbar'),
+          backgroundColor: Colors.blue.shade700,
+          title: Text(
+            'Flutter Galeri',
+            textScaleFactor: 1.6,
+            style: TextStyle(fontFamily: "Teko"),
+          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.playlist_play),
@@ -62,433 +69,159 @@ class ScaffoldOgesi extends StatelessWidget {
           ],
         ),
         body: Center(
-//          child: new Text(
-//            "Merhaba Scaffold",
-//            textDirection: TextDirection.ltr,
-//          ),
             child: GridView.count(
           primary: false,
-//          padding: const EdgeInsets.all(20.0),
           crossAxisSpacing: 5.0,
           crossAxisCount: 2,
           children: <Widget>[
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/flutter_demo"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
+            anasayfaCard(
+              "/flutter_demo",
+              false,
+              "https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500",
+              false,
+              "Fluter Demo \nSayfasına Git",
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Card(
+                child: GestureDetector(
+                  onTap: () {
+                    debugPrint("toast tek tıklama");
+                    Fluttertoast.showToast(
+                      msg: "Bu ögeye bir kez tıkladınız.",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.black87,
+                      textColor: Colors.white,
+                    );
+                  },
+                  onDoubleTap: () {
+                    debugPrint("toast çift tıklama");
+                    Fluttertoast.showToast(
+                      msg: "Bu ögeye iki kez tıkladınız.",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.white70,
+                      textColor: Colors.black,
+                    );
+                  },
+                  onLongPress: () {
+                    debugPrint("toast uzun tıklama");
+                    Fluttertoast.showToast(
+                      msg: "Bu ögeye uzun tıkladınız.",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.TOP,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                    );
+                  },
+//                child: anasayfaCard("/", false, "https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Toast.jpg", false, "Toast Mesajı \nGöster"),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              "https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Toast.jpg"),
+                          fit: BoxFit.cover),
+                      shape: BoxShape.rectangle,
 //                      borderRadius: BorderRadius.circular(25.0)
-                  ),
+                    ),
 //                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
+                    margin: EdgeInsets.all(5.0),
                     alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-                      padding: EdgeInsets.all(8.0),
-                      color: Color(0xCDFFFFFF),
-                      child: Text(
-                        "Fluter Demo \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
+                    child: Transform(
+                      alignment: Alignment.bottomCenter,
+                      transform: Matrix4.skewY(0.0)..rotateZ(0),
+                      child: Container(
+                        padding: EdgeInsets.all(8.0),
+                        color: Color(0xCDFFFFFF),
+                        child: Text(
+                          "Toast Mesajı \nGöster",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
+            ), // Toast Sayfası
+            anasayfaCard(
+              "",
+              true,
+              "assets/images/database.png",
+              false,
+              "Sqlite İşlemleri \nSayfasına Git",
             ),
-            Card(
-              child: GestureDetector(
-                onTap: () {
-                  Fluttertoast.showToast(
-                    msg: "Bu ögeye bir kez tıkladınız.",
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.BOTTOM,
-                    backgroundColor: Colors.black87,
-                    textColor: Colors.white,
-                  );
-                },
-                onDoubleTap: () {
-                  Fluttertoast.showToast(
-                    msg: "Bu ögeye iki kez tıkladınız.",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.CENTER,
-                    backgroundColor: Colors.white70,
-                    textColor: Colors.black,
-                  );
-                },
-                onLongPress: () {
-                  Fluttertoast.showToast(
-                    msg: "Bu ögeye uzun tıkladınız.",
-                    toastLength: Toast.LENGTH_LONG,
-                    gravity: ToastGravity.TOP,
-                    backgroundColor: Colors.red,
-                    textColor: Colors.white,
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://cdncontribute.geeksforgeeks.org/wp-content/uploads/Toast.jpg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.bottomCenter,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-                      padding: EdgeInsets.all(8.0),
-                      color: Color(0xCDFFFFFF),
-                      child: Text(
-                        "Toast Mesajı \nGöster",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            anasayfaCard(
+              "/imageviews",
+              true,
+              "assets/images/lake.jpg",
+              false,
+              "İmage View \nSayfasına Git",
             ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/imageviews"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/images/lake.jpg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Color(0xCDFFFFFF),
-                      child: Text(
-                        "İmage View \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            anasayfaCard(
+              "/form_dialog",
+              false,
+              "https://flutterawesome.com/content/images/2019/02/flutter_moneytextfieldform.jpg",
+              false,
+              "Form Dialog \nSayfasına Git",
             ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/alertview"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://material-design.storage.googleapis.com/publish/material_v_9/0Bzhp5Z4wHba3TzFHYVlrbWF2bnM/components_alerts_1.png"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Colors.black54,
-                      child: Text(
-                        "Alert View \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+            anasayfaCard(
+                "/alertview",
+                false,
+                "https://material-design.storage.googleapis.com/publish/material_v_9/0Bzhp5Z4wHba3TzFHYVlrbWF2bnM/components_alerts_1.png",
+                true,
+                "Alert View \nSayfasına Git"),
+            anasayfaCard(
+                "/shared_preferences",
+                true,
+                "assets/images/ram.png",
+                true,
+                "Shared Preferences \nSayfasına Git"),
+            anasayfaCard(
+                "/dosya_islemleri",
+                false,
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPF7x3QiywfswwxSNXeQe4nT3sO48p-JeV39-dtLLXPFuEDA35",
+                true,
+                "Dosya İşlemleri\nSayfasına Git"),
+            anasayfaCard(
+                "/json_islemleri",
+                false,
+                "https://www.openautomationsoftware.com/wp-content/uploads/2016/07/JSON-icon-2.jpg",
+                true,
+                "Json İşlemleri\nSayfasına Git"),
+            anasayfaCard(
+                "/localJson_islemleri",
+                true,
+                "assets/images/json.png",
+                true,
+                "Yerel Json İşlemleri\nSayfasına Git"
             ),
-            Card(
-              child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, "/shared_preferences"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjIxxkDI4rx4TGurHV1lPwDBXfO6GSuFvLfWjCJTsOM5VgknkOQg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Colors.black54,
-                      child: Text(
-                        "Shared Preferences \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/dosya_islemleri"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPF7x3QiywfswwxSNXeQe4nT3sO48p-JeV39-dtLLXPFuEDA35"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Colors.black54,
-                      child: Text(
-                        "Dosya İşlemleri\nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/pull2refresh"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://www.androidhive.info/wp-content/uploads/2015/05/android-swipe-down-to-refresh-list-view-tutorial.jpg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Color(0xCDFFFFFF),
-                      child: Text(
-                        "Pull To Refresh \nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "/json_islemleri"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            "https://www.openautomationsoftware.com/wp-content/uploads/2016/07/JSON-icon-2.jpg"),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(8.0),
-                      color: Colors.black54,
-                      child: Text(
-                        "Json İşlemleri\nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, "/localJson_islemleri"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/json.png"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(15.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(10.0),
-                      color: Colors.black54,
-                      child: Text(
-                        "Yerel Json İşlemleri\nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white70, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, "/basithttp"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://previews.123rf.com/images/rastudio/rastudio1708/rastudio170808997/84743505-http-vector-line-icon-isolated-on-white-background-http-line-icon-for-infographic-website-or-app-blu.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(15.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      padding: EdgeInsets.all(10.0),
-                      color: Colors.grey.withAlpha(220),
-                      child: Text(
-                        "Http İşlemleri\nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onTap: () =>
-                    Navigator.pushNamed(context, "/flashlight"),
-                child: Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://img.icons8.com/cotton/2x/flash-light.png"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: BoxShape.rectangle,
-//                      borderRadius: BorderRadius.circular(25.0)
-                  ),
-//                color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(15.0),
-                  alignment: Alignment.center,
-                  child: Transform(
-                    alignment: Alignment.bottomCenter,
-                    transform: Matrix4.skewY(0.0)..rotateZ(0),
-                    child: Container(
-//                    width: double.infinity,
-                      margin: EdgeInsets.only(top: 80),
-                      padding: EdgeInsets.all(10.0),
-                      color: Colors.grey.withAlpha(220),
-                      child: Text(
-                        "El Feneri\nSayfasına Git",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black87, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onDoubleTap: () => Navigator.pushNamed(context, "/hello"),
-                child: Container(
-                  color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: new Text("Hello \nSayfasına Git\n(Çift Tıklama)",
-                      textAlign: TextAlign.center),
-                ),
-              ),
-            ),
-            Card(
-              child: GestureDetector(
-                onLongPress: () =>
-                    Navigator.pushNamed(context, "/degisenwidget"),
-                child: Container(
-                  color: Colors.blue.shade100,
-                  margin: EdgeInsets.all(5.0),
-                  alignment: Alignment.center,
-                  child: new Text(
-                      "Degisen Widget \nSayfasına Git\n(Uzun Tıklama)",
-                      textAlign: TextAlign.center),
-                ),
-              ),
-            ),
+            anasayfaCard(
+                "/basithttp",
+                false,
+                "https://previews.123rf.com/images/rastudio/rastudio1708/rastudio170808997/84743505-http-vector-line-icon-isolated-on-white-background-http-line-icon-for-infographic-website-or-app-blu.jpg",
+                true,
+                "Http İşlemleri\nSayfasına Git"),
+            anasayfaCard(
+                "/flashlight",
+                false,
+                "https://img.icons8.com/cotton/2x/flash-light.png",
+                true,
+                "El Feneri\nSayfasına Git"),
+            anasayfaCard(
+                "/hello",
+                false,
+                "https://flutter.dev/assets/ui/layout/margin-padding-border-9616dd0d7af45b95e6fcface25cd933b6b4a0fda51c1ab1bb9287bc8ed92c356.png",
+                true,
+                "Hello \nSayfasına Git\n(Çift Tıklama)"),
+            anasayfaCard(
+                "/degisenwidget",
+                false,
+                "https://10clouds.com/wp-content/uploads/2017/12/flutter-feature.png",
+                true,
+                "Degisen Widget \nSayfasına Git\n(Uzun Tıklama)"),
             GridElemani(),
             GridElemani(),
             GridElemani(),
@@ -529,29 +262,83 @@ class ScaffoldOgesi extends StatelessWidget {
               }
             }),
         drawer: new Drawer(
-            child: Padding(
-          padding: EdgeInsets.only(top: 15.0),
-          child: ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text("Account"),
-            onTap: () {
-              Navigator.pop(context);
-              debugPrint("Yan menü: Account");
-            },
+          child: ListView(
+            children: <Widget>[
+              DrawerHeader(
+                child: Text(
+                  'Drawer Header',
+                  textScaleFactor: 3,
+                  style: TextStyle(fontFamily: "Teko"),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  gradient: LinearGradient(
+                    // Where the linear gradient begins and ends
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    // Add one stop for each color. Stops should increase from 0 to 1
+                    stops: [0.1, 0.5, 0.7, 0.9],
+                    colors: [
+                      // Colors are easy thanks to Flutter's Colors class.
+                      Colors.indigo[800],
+                      Colors.indigo[700],
+                      Colors.indigo[600],
+                      Colors.indigo[400],
+                    ],
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text("Account"),
+                onTap: () {
+                  Navigator.pop(context);
+                  debugPrint("Yan menü: Account");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.change_history),
+                title: Text("Change History"),
+                onTap: () {
+                  Navigator.pop(context);
+                  debugPrint("Yan menü: Change History");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {
+                  Navigator.pop(context);
+                  debugPrint("Yan menü: Settings");
+                },
+              ),
+            ],
           ),
-        )));
+        ));
   }
 }
 
 class GridElemani extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        color: Colors.blue.shade100,
-        margin: EdgeInsets.all(5.0),
-        alignment: Alignment.center,
-        child: new Text("Grid elemanı", textAlign: TextAlign.center),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Card(
+        color: Colors.indigo,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/placeholder.png"),
+                fit: BoxFit.cover),
+            shape: BoxShape.rectangle,
+          ),
+          margin: EdgeInsets.all(5.0),
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 55.0),
+            child: Text("Resim Yok", textAlign: TextAlign.center),
+          ),
+        ),
       ),
     );
   }

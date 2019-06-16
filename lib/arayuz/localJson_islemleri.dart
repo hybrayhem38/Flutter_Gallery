@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:flutter/material.dart';
 
 class localJsonIslemleri extends StatefulWidget {
   @override
@@ -11,12 +10,121 @@ class localJsonIslemleri extends StatefulWidget {
 class localJsonState extends State<localJsonIslemleri> {
   List ogrenci;
 
+  String _text = "initial";
+  final isimController = TextEditingController();
+  final soyisimController = TextEditingController();
+  final GeneralController = GlobalKey<FormState>();
+
+  _saveForm() {
+    if (GeneralController.currentState.validate()) {
+      setState(() {
+        this._text = isimController.text+soyisimController.text;
+      });
+      Navigator.pop(context);
+    }
+  }
+
+  __showDialog() {
+    showDialog(
+        child: new Dialog(
+          child: new Column(
+            children: <Widget>[
+              Form(
+                key: GeneralController,
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextFormField(
+                        validator: (yazi) {
+                          if (yazi.isEmpty) {
+                            return "Lütfen bu kısmı boş bırakmayın!";
+                          }
+                        },
+                        controller: isimController,
+                        decoration: InputDecoration(
+                            hintText: "İsim",
+                            hintStyle: TextStyle(fontSize: 18)),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: RaisedButton(
+                          color: Colors.blueAccent,
+                          child: Text(
+                            "Ekle",
+                          ),
+                          onPressed: _saveForm,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        context: context);
+  }
+  _showDialog(){
+    showDialog(context: context,child: new Dialog(
+      child: new Column(
+        children: <Widget>[
+          Form(
+            key: GeneralController,
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextFormField(
+                    validator: (yazi) {
+                      if (yazi.isEmpty) {
+                        return "Lütfen bu kısmı boş bırakmayın!";
+                      }
+                    },
+                    controller: isimController,
+                    decoration: InputDecoration(
+                        hintText: "İsim",
+                        hintStyle: TextStyle(fontSize: 18)),
+                  ),
+                  TextFormField(
+                    validator: (yazi) {
+                      if (yazi.isEmpty) {
+                        return "Lütfen bu kısmı boş bırakmayın!";
+                      }
+                    },
+                    controller: soyisimController,
+                    decoration: InputDecoration(
+                        hintText: "Soyisim",
+                        hintStyle: TextStyle(fontSize: 18)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: RaisedButton(
+                      child: Text(
+                        "Ekle",
+                      ),
+                      onPressed: _saveForm,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("Lokal Json İşlemleri"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.person_add), onPressed: _showDialog)
+        ],
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
@@ -33,18 +141,14 @@ class localJsonState extends State<localJsonIslemleri> {
                       padding: EdgeInsets.all(15.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-
                         children: <Widget>[
-//                          Text("Öğrencinin adı: ${ogrenci[index]["isim"]}"),
-//                          Text(
-//                              "Öğrencinin soyadı: ${ogrenci[index]["soyisim"]}"),
-//                          Text("Öğrenci No: ${ogrenci[index]["numara"]}"),
-//                          Text("Cinsiyeti: ${ogrenci[index]["cinsiyet"]}"),
-//                          Text("Başarı Durumu: ${ogrenci[index]["basarili"]?"Başarılı":"Tembel"}"),
+                          Text(_text),
                           Container(
-                            margin: EdgeInsets.only(left: 20.0,bottom: 20),
+                            margin: EdgeInsets.only(left: 20.0, bottom: 20,top: 15),
                             child: Image.asset(
-                              ogrenci[index]["cinsiyet"] == "Erkek"?"assets/images/boy.png":"assets/images/girl.png",
+                              ogrenci[index]["cinsiyet"] == "Erkek"
+                                  ? "assets/images/boy.png"
+                                  : "assets/images/girl.png",
 //                              scale: 3,
                             ),
                             width: 50.0,
@@ -75,7 +179,8 @@ class localJsonState extends State<localJsonIslemleri> {
                                       text: "Öğrencinin soyadı: ",
                                       style: new TextStyle(
                                           fontWeight: FontWeight.bold)),
-                                  TextSpan(text: "${ogrenci[index]["soyisim"]}"),
+                                  TextSpan(
+                                      text: "${ogrenci[index]["soyisim"]}"),
                                 ],
                               ),
                             ),
@@ -105,7 +210,8 @@ class localJsonState extends State<localJsonIslemleri> {
                                       text: "Cinsiyeti: ",
                                       style: new TextStyle(
                                           fontWeight: FontWeight.bold)),
-                                  TextSpan(text: "${ogrenci[index]["cinsiyet"]}"),
+                                  TextSpan(
+                                      text: "${ogrenci[index]["cinsiyet"]}"),
                                 ],
                               ),
                             ),
@@ -130,10 +236,9 @@ class localJsonState extends State<localJsonIslemleri> {
                         ],
                       ),
                     ),
-
                   );
                 },
-                itemCount: ogrenci == 0 ? 0 : ogrenci.length,
+                itemCount: ogrenci == null ? 0 : ogrenci.length,
               );
             },
           ),

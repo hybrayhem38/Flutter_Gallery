@@ -34,7 +34,6 @@ Future<Post> getPost() async {
   final answer = await http.get("https://jsonplaceholder.typicode.com/posts/1");
   if (answer.statusCode == 200) {
     return Post.fromJson(json.decode(answer.body));
-
   } else {
     throw Exception(
         "Veriler getirilirken hata oluştu. Hata kodu: ${answer.statusCode}");
@@ -60,11 +59,64 @@ class JsonIslemleri extends StatelessWidget {
 
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text("Gelen userId: $userId"),
-                  Text("Gelen id: $id"),
-                  Text("Gelen title: $title"),
-                  Text("Gelen body: $body"),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: "Gelen userId: ",
+                              style: new TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "$userId"),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: "Gelen id: ",
+                              style: new TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "$id"),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: "Gelen title: \n",
+                              style: new TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "$title"),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: "Gelen body: \n",
+                              style: new TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "$body"),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               );
             } else if (snapshot.hasError) {

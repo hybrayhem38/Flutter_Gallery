@@ -41,16 +41,18 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/images/lake.jpg
-    - assets/images/torch.png
-    - assets/images/loading.gif
-    - assets/images/transparent.gif
-    - assets/images/fire.gif
-    - assets/images/json.png
-    - assets/images/boy.png
-    - assets/images/girl.png
+    - assets/images/
     - assets/data/sinif.json
-    - assets/audio/
+    - assets/audio/click.mp3
+    - assets/fonts/
+
+  fonts:
+    - family: Merriweather
+      fonts:
+        - asset: assets/fonts/Merriweather-Regular.ttf
+    - family: Teko
+      fonts:
+        - asset: assets/fonts/Teko-Regular.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

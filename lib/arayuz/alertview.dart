@@ -6,6 +6,7 @@ class AlertViewOgesi extends StatefulWidget {
 }
 
 class AlertState extends State {
+
   final textController = TextEditingController();
   final GeneralController = GlobalKey<FormState>();
 
