@@ -20,6 +20,12 @@ class FlashLightState extends State<StatefulWidget> {
     super.initState();
     setupLight();
   }
+  @override
+  void dispose() {
+    Lamp.turnOff();
+    super.dispose();
+  }
+
 
   requestPermission() async {
     debugPrint("Kamera izni isteniyor...");

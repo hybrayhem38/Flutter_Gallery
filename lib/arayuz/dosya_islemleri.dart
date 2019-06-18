@@ -55,16 +55,16 @@ class DosyaState extends State<DosyaIslemleri> {
     return widget.kayit_islemi.dosyaYaz(veri);
   }
 
-  @override
-  void initState() {
-    super.initState();
-    // Bu kısım aktif olduğunda sayfa yeni açıldığında veri otomatik okunuyor(?) ve ekrana yazılıyor.
+//  @override
+//  void initState() {
+//    super.initState();
+//     //Bu kısım aktif olduğunda sayfa yeni açıldığında veri otomatik okunuyor(?) ve ekrana yazılıyor.
 //    widget.kayit_islemi.dosyaOku().then((String deger) {
 //      setState(() {
 //        veri = deger;
 //      });
 //    });
-  }
+//  }
 
   void veriOku() {
     widget.kayit_islemi.dosyaOku().then((String deger) {

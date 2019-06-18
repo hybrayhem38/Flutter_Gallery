@@ -42,7 +42,7 @@ class ScaffoldOgesi extends StatelessWidget {
           backgroundColor: Colors.blue.shade700,
           title: Text(
             'Flutter Galeri',
-            textScaleFactor: 1.6,
+            textScaleFactor: 1.4,
             style: TextStyle(fontFamily: "Teko"),
           ),
           actions: <Widget>[
@@ -210,18 +210,24 @@ class ScaffoldOgesi extends StatelessWidget {
                 "https://img.icons8.com/cotton/2x/flash-light.png",
                 true,
                 "El Feneri\nSayfasına Git"),
-            anasayfaCard(
-                "/hello",
-                false,
-                "https://flutter.dev/assets/ui/layout/margin-padding-border-9616dd0d7af45b95e6fcface25cd933b6b4a0fda51c1ab1bb9287bc8ed92c356.png",
-                true,
-                "Hello \nSayfasına Git\n(Çift Tıklama)"),
-            anasayfaCard(
-                "/degisenwidget",
-                false,
-                "https://10clouds.com/wp-content/uploads/2017/12/flutter-feature.png",
-                true,
-                "Degisen Widget \nSayfasına Git\n(Uzun Tıklama)"),
+            GestureDetector(
+              onDoubleTap: () => Navigator.pushNamed(context, "/hello"),
+              child: anasayfaCard(
+                  null,
+                  false,
+                  "https://flutter.dev/assets/ui/layout/margin-padding-border-9616dd0d7af45b95e6fcface25cd933b6b4a0fda51c1ab1bb9287bc8ed92c356.png",
+                  true,
+                  "Hello \nSayfasına Git\n(Çift Tıklama)"),
+            ),
+            GestureDetector(
+              onLongPress: () => Navigator.pushNamed(context, "/degisenwidget"),
+              child: anasayfaCard(
+                  null,
+                  false,
+                  "https://10clouds.com/wp-content/uploads/2017/12/flutter-feature.png",
+                  true,
+                  "Degisen Widget \nSayfasına Git\n(Uzun Tıklama)"),
+            ),
             GridElemani(),
             GridElemani(),
             GridElemani(),

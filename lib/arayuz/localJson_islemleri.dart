@@ -10,121 +10,12 @@ class localJsonIslemleri extends StatefulWidget {
 class localJsonState extends State<localJsonIslemleri> {
   List ogrenci;
 
-  String _text = "initial";
-  final isimController = TextEditingController();
-  final soyisimController = TextEditingController();
-  final GeneralController = GlobalKey<FormState>();
-
-  _saveForm() {
-    if (GeneralController.currentState.validate()) {
-      setState(() {
-        this._text = isimController.text+soyisimController.text;
-      });
-      Navigator.pop(context);
-    }
-  }
-
-  __showDialog() {
-    showDialog(
-        child: new Dialog(
-          child: new Column(
-            children: <Widget>[
-              Form(
-                key: GeneralController,
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextFormField(
-                        validator: (yazi) {
-                          if (yazi.isEmpty) {
-                            return "Lütfen bu kısmı boş bırakmayın!";
-                          }
-                        },
-                        controller: isimController,
-                        decoration: InputDecoration(
-                            hintText: "İsim",
-                            hintStyle: TextStyle(fontSize: 18)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: RaisedButton(
-                          color: Colors.blueAccent,
-                          child: Text(
-                            "Ekle",
-                          ),
-                          onPressed: _saveForm,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        context: context);
-  }
-  _showDialog(){
-    showDialog(context: context,child: new Dialog(
-      child: new Column(
-        children: <Widget>[
-          Form(
-            key: GeneralController,
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextFormField(
-                    validator: (yazi) {
-                      if (yazi.isEmpty) {
-                        return "Lütfen bu kısmı boş bırakmayın!";
-                      }
-                    },
-                    controller: isimController,
-                    decoration: InputDecoration(
-                        hintText: "İsim",
-                        hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                  TextFormField(
-                    validator: (yazi) {
-                      if (yazi.isEmpty) {
-                        return "Lütfen bu kısmı boş bırakmayın!";
-                      }
-                    },
-                    controller: soyisimController,
-                    decoration: InputDecoration(
-                        hintText: "Soyisim",
-                        hintStyle: TextStyle(fontSize: 18)),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: RaisedButton(
-                      child: Text(
-                        "Ekle",
-                      ),
-                      onPressed: _saveForm,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    ),);
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Lokal Json İşlemleri"),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.person_add), onPressed: _showDialog)
-        ],
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
@@ -142,7 +33,6 @@ class localJsonState extends State<localJsonIslemleri> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(_text),
                           Container(
                             margin: EdgeInsets.only(left: 20.0, bottom: 20,top: 15),
                             child: Image.asset(
