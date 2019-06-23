@@ -42,8 +42,8 @@ class ScaffoldOgesi extends StatelessWidget {
           backgroundColor: Colors.blue.shade700,
           title: Text(
             'Flutter Galeri',
-            textScaleFactor: 1.4,
-            style: TextStyle(fontFamily: "Teko"),
+            textScaleFactor: 1.2,
+            style: TextStyle(fontFamily: "Roboto"),
           ),
           actions: <Widget>[
             IconButton(
@@ -56,11 +56,11 @@ class ScaffoldOgesi extends StatelessWidget {
               tooltip: 'Restitch it',
               onPressed: () => print("Üst menü: playlist-add"),
             ),
-            IconButton(
-              icon: Icon(Icons.playlist_add_check),
-              tooltip: 'Repair it',
-              onPressed: () => print("Üst menü: playlist-add-check"),
-            ),
+//            IconButton(
+//              icon: Icon(Icons.playlist_add_check),
+//              tooltip: 'Repair it',
+//              onPressed: () => print("Üst menü: playlist-add-check"),
+//            ),
             IconButton(
               icon: Icon(Icons.network_check),
               tooltip: 'Network Check',
