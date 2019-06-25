@@ -42,8 +42,8 @@ class ScaffoldOgesi extends StatelessWidget {
           backgroundColor: Colors.blue.shade700,
           title: Text(
             'Flutter Galeri',
-            textScaleFactor: 1.2,
-            style: TextStyle(fontFamily: "Roboto"),
+            textScaleFactor: 1,
+            style: TextStyle(fontFamily: "Merriweather"),
           ),
           actions: <Widget>[
             IconButton(
@@ -79,7 +79,7 @@ class ScaffoldOgesi extends StatelessWidget {
               false,
               "https://images.pexels.com/photos/326311/pexels-photo-326311.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500",
               false,
-              "Fluter Demo \nSayfasına Git",
+              "Flutter Demo \nSayfasına Git",
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -146,6 +146,13 @@ class ScaffoldOgesi extends StatelessWidget {
                 ),
               ),
             ), // Toast Sayfası
+            anasayfaCard(
+              "/e_school",
+              false,
+              "https://www.shareicon.net/download/2016/08/18/813759_contacts_512x512.png",
+              false,
+              "E-School \nSayfasına Git",
+            ),
             anasayfaCard(
               "",
               true,

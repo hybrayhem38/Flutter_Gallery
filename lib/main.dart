@@ -8,6 +8,7 @@ import './arayuz/imageviews.dart';
 import './arayuz/alertview.dart';
 import 'arayuz/basithttp.dart';
 import 'arayuz/dosya_islemleri.dart';
+import 'arayuz/e_school.dart';
 import 'arayuz/flashlight.dart';
 import 'arayuz/json_islemleri.dart';
 import 'arayuz/localJson_islemleri.dart';
@@ -35,8 +36,9 @@ void main() {
       "/pull2refresh": (context) => Pull2Refresh(),
       "/flashlight": (context) => FlashLight(),
       "/form_dialog": (context) => DialogExample(),
+      "/e_school": (context) => eSchool(),
     },
     theme: new ThemeData(
-        fontFamily: "Merriweather", primaryColor: Colors.blue.shade700),
+        fontFamily: "Roboto", primaryColor: Colors.blue.shade700),
   ));
 }
