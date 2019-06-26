@@ -85,7 +85,7 @@ class FlashLightState extends State<StatefulWidget> {
                   opacity: lightIntensity,
                   child: AnimatedCrossFade(
                       firstChild: Image.asset("assets/images/fire.gif"),
-                      secondChild: Image.asset("assets/images/transparent.gif"),
+                      secondChild: Image.asset("assets/images/transparent.png"),
                       crossFadeState: lightOn
                           ? CrossFadeState.showFirst
                           : CrossFadeState.showSecond,
