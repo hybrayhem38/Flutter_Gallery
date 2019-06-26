@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/student.dart';
-import 'package:flutter_app/old/add_student_page.dart';
 
 class eSchool extends StatefulWidget {
   @override
@@ -9,16 +8,19 @@ class eSchool extends StatefulWidget {
 
 class eSchoolState extends State<eSchool> {
   final List<Student> students = Student.students;
-
   final ctrlName = TextEditingController();
   final ctrlNumber = TextEditingController();
   final GeneralController = GlobalKey<FormState>();
+  
+  String radioGender;
+
+  void setGender(String val) => setState(() => radioGender = val);
 
   _saveForm() {
     if (GeneralController.currentState.validate()) {
       setState(() {
         Student.students.add(Student(
-            name: ctrlName.text, number: ctrlNumber.text, cinsiyet: "Erkek"));
+            name: ctrlName.text, number: ctrlNumber.text, cinsiyet: radioGender));
         ctrlName.clear();
         ctrlNumber.clear();
       });
@@ -40,6 +42,42 @@ class eSchoolState extends State<eSchool> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Text("Cinsiyet seçiniz:",style: TextStyle(fontWeight: FontWeight.w700),),
+                    Padding(padding: EdgeInsets.only(bottom: 10)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset(
+                            "assets/images/boy.png",
+                            scale: 4,
+                          ),
+                        ),
+                        Padding(padding: EdgeInsets.only(left: 40,right: 40,bottom: 10)),
+                        Container(
+                          child: Image.asset(
+                            "assets/images/girl.png",
+                            scale: 4.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Radio(
+                          value: "Erkek",
+                          groupValue: radioGender,
+                          onChanged: setGender,
+                        ),
+                        Padding(padding: EdgeInsets.only(left: 40,right: 40)),
+                        Radio(
+                          value: "Kadın",
+                          groupValue: radioGender,
+                          onChanged: setGender,
+                        ),
+                      ],
+                    ),
                     TextFormField(
                       validator: (yazi) {
                         if (yazi.isEmpty) {
@@ -58,7 +96,8 @@ class eSchoolState extends State<eSchool> {
                       },
                       controller: ctrlNumber,
                       decoration: InputDecoration(
-                          hintText: "Okul No", hintStyle: TextStyle(fontSize: 18)),
+                          hintText: "Okul No",
+                          hintStyle: TextStyle(fontSize: 18)),
                     ),
                     Padding(
                       padding: EdgeInsets.all(10.0),
@@ -66,13 +105,17 @@ class eSchoolState extends State<eSchool> {
                         color: Colors.blueAccent,
                         child: Text(
                           "Ekle",
-                          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
                         ),
                         onPressed: _saveForm,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.0)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(28.0)),
                       ),
                     ),
-                  //TODO: add avatar selections
+                    //TODO: convert diaolog to stateful widget
                   ],
                 ),
               ),
