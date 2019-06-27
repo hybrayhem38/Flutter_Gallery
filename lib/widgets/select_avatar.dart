@@ -31,13 +31,20 @@ class selectAvatarState extends State<selectAvatar> {
           child: ClipOval(
             child: Container(
               padding: EdgeInsets.all(2),
-              color: cinsiyet == "Erkek" ? Colors.black : Colors.white,
-              child: Image.asset(
-                "assets/images/boy.png",
-                scale: 4,
+              color: cinsiyet == "Erkek" ? Colors.lightGreen : Colors.white,
+              child: ClipOval(
+                child: Container(
+                  padding: EdgeInsets.all(2),
+                  color: Colors.white,
+                  child: Image.asset(
+                    "assets/images/boy.png",
+                    scale: 4,
+                  ),
+                ),
               ),
             ),
           ),
+
         ),
         Padding(padding: EdgeInsets.only(left: 40, right: 40, bottom: 10)),
         GestureDetector(
@@ -50,10 +57,16 @@ class selectAvatarState extends State<selectAvatar> {
           child: ClipOval(
             child: Container(
               padding: EdgeInsets.all(2),
-              color: cinsiyet == "Kadın" ? Colors.black : Colors.white,
-              child: Image.asset(
-                "assets/images/girl.png",
-                scale: 4.5,
+              color: cinsiyet == "Kadın" ? Colors.lightGreen : Colors.white,
+              child: ClipOval(
+                child: Container(
+                  padding: EdgeInsets.all(2),
+                  color: Colors.white,
+                  child: Image.asset(
+                    "assets/images/girl.png",
+                    scale: 4.5,
+                  ),
+                ),
               ),
             ),
           ),
