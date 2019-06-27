@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/model/student.dart';
+import 'package:flutter_app/widgets/select_avatar.dart';
 
 class eSchool extends StatefulWidget {
   @override
@@ -11,16 +12,15 @@ class eSchoolState extends State<eSchool> {
   final ctrlName = TextEditingController();
   final ctrlNumber = TextEditingController();
   final GeneralController = GlobalKey<FormState>();
-  
-  String radioGender;
 
-  void setGender(String val) => setState(() => radioGender = val);
+  String cinsiyet;
 
   _saveForm() {
     if (GeneralController.currentState.validate()) {
       setState(() {
+        debugPrint("kaydediliyor: $cinsiyet");
         Student.students.add(Student(
-            name: ctrlName.text, number: ctrlNumber.text, cinsiyet: radioGender));
+            name: ctrlName.text, number: ctrlNumber.text, cinsiyet: cinsiyet));
         ctrlName.clear();
         ctrlNumber.clear();
       });
@@ -42,42 +42,12 @@ class eSchoolState extends State<eSchool> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Cinsiyet seçiniz:",style: TextStyle(fontWeight: FontWeight.w700),),
+                    Text(
+                      "Cinsiyet seçiniz:",
+                      style: TextStyle(fontWeight: FontWeight.w700),
+                    ),
                     Padding(padding: EdgeInsets.only(bottom: 10)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          child: Image.asset(
-                            "assets/images/boy.png",
-                            scale: 4,
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 40,right: 40,bottom: 10)),
-                        Container(
-                          child: Image.asset(
-                            "assets/images/girl.png",
-                            scale: 4.5,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Radio(
-                          value: "Erkek",
-                          groupValue: radioGender,
-                          onChanged: setGender,
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 40,right: 40)),
-                        Radio(
-                          value: "Kadın",
-                          groupValue: radioGender,
-                          onChanged: setGender,
-                        ),
-                      ],
-                    ),
+                    selectAvatar(cinsiyet),
                     TextFormField(
                       validator: (yazi) {
                         if (yazi.isEmpty) {
@@ -115,7 +85,6 @@ class eSchoolState extends State<eSchool> {
                             borderRadius: BorderRadius.circular(28.0)),
                       ),
                     ),
-                    //TODO: convert diaolog to stateful widget
                   ],
                 ),
               ),
