@@ -1,16 +1,13 @@
 # Flutter_Gallery
 
-A new Flutter application.
+A new Flutter Gallery application. Includes example uses of flutter.
 
-## Getting Started
+# Homepage
+<img src="screenshots/home1.jpg" width="360"> <img src="screenshots/home2.jpg" width="360">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# Torch
+<img src="screenshots/torch.gif" width="360">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+# Student Database
+<img src="screenshots/eokul.jpg" width="360">
